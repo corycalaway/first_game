@@ -25,7 +25,9 @@ export default class extends Phaser.Scene
 
         // Player Start
         this.player = this.add.triangle(300, 200, 0, 64, 32, 0, 64, 64, 0xff0000)
+        
         this.physics.add.existing(this.player)
+        this.player.body.setCollideWorldBounds(true, 1, 1)
  
         
      
@@ -35,6 +37,9 @@ export default class extends Phaser.Scene
 
         // Collider for paddle and player
         this.physics.add.collider(paddleLeft, this.player)
+
+        // Collider for ball and player
+        this.physics.add.collider(ball, this.player)
 
         this.cursors = this.input.keyboard.createCursorKeys()
     }
